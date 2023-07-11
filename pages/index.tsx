@@ -1,11 +1,17 @@
 import Head from "next/head";
+import { useState } from "react";
+
 import {
   BackgroundImage1,
   BackgroundImage2,
   GradientBackgroundCon,
 } from "@/components/QuoteGenerator/QuoteGeneratorElements";
 
+import Footer from "@/components/Footer";
+
 export default function Home() {
+  const [numberOfQuotes, setNumberOfQuotes] = useState<Number>(0);
+
   return (
     <>
       <Head>
@@ -31,6 +37,8 @@ export default function Home() {
           width="600"
           alt="Cloud-and-Thunder"
         />
+
+        <Footer numberOfQuotes={numberOfQuotes} />
       </GradientBackgroundCon>
     </>
   );
