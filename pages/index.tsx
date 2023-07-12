@@ -1,13 +1,10 @@
 import Head from "next/head";
 import { useState } from "react";
 
-import {
-  BackgroundImage1,
-  BackgroundImage2,
-  GradientBackgroundCon,
-} from "@/components/QuoteGenerator/QuoteGeneratorElements";
+import { GradientBackgroundCon } from "@/components/QuoteGenerator/QuoteGeneratorElements";
 
 import Footer from "@/components/Footer";
+import CloudBGImage from "@/components/CloudBGImage";
 
 export default function Home() {
   const [numberOfQuotes, setNumberOfQuotes] = useState<Number>(0);
@@ -25,18 +22,7 @@ export default function Home() {
       </Head>
 
       <GradientBackgroundCon>
-        <BackgroundImage1
-          src="/assets/cloud-and-thunder.png"
-          height="300"
-          width="300"
-          alt="Cloud-and-Thunder"
-        />
-        <BackgroundImage2
-          src="/assets/cloudy-weather.png"
-          height="300"
-          width="600"
-          alt="Cloud-and-Thunder"
-        />
+        <CloudBGImage />
 
         <Footer numberOfQuotes={numberOfQuotes} />
       </GradientBackgroundCon>
