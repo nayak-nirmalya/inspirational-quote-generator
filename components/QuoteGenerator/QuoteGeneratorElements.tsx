@@ -9,7 +9,7 @@ export const GradientBackgroundCon = styled.div`
   animation: gradient 6s ease infinite;
   height: 100vh;
   width: 100vw;
-  /* @keyframes gradient {
+  @keyframes gradient {
     0% {
       background-position: 0% 50%;
     }
@@ -19,7 +19,7 @@ export const GradientBackgroundCon = styled.div`
     100% {
       background-position: 0% 50%;
     }
-  } */
+  }
 `;
 
 export const BackgroundImage1 = styled(Image)`
