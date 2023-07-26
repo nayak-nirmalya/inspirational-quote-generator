@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
+import { API } from "aws-amplify";
+import { GraphQLResult } from "@aws-amplify/api-graphql";
 
 import { GradientBackgroundCon } from "@/components/QuoteGenerator/QuoteGeneratorElements";
 import QuoteGeneratorModal from "@/components/QuoteGenerator";
-
 import CloudBGImage from "@/components/CloudBGImage";
 import Footer from "@/components/Footer";
 import HeadMetadata from "@/components/HeadMetadata";
 import QuoteGeneratorContainer from "@/components/QuoteGeneratorContainer";
 
 import { generateAQuote, quotesQueryName } from "@/src/graphql/queries";
-import { API } from "aws-amplify";
-import { GraphQLResult } from "@aws-amplify/api-graphql";
 
 function isGraphQLResultForquotesQueryName(
   response: any
@@ -74,7 +73,6 @@ export default function Home() {
     setOpenGenerator(true);
     setProcessingQuote(true);
     try {
-      // Run Lambda Function
       const runFunction = "runFunction";
       const runFunctionStringified = JSON.stringify(runFunction);
       const response = await API.graphql<GenerateAQuoteData>({
@@ -93,18 +91,10 @@ export default function Home() {
       console.log(body);
       setQuoteReceived(body);
 
-      // End state:
-      setProcessingQuote(false);
-
-      // Fetch if any new quotes were generated from counter
       updateQuoteInfo();
-
-      // setProcessingQuote(false);
-      // setTimeout(() => {
-      //   setProcessingQuote(false);
-      // }, 3000);
     } catch (error) {
       console.error("Error Generating Quote: ", error);
+    } finally {
       setProcessingQuote(false);
     }
   };
