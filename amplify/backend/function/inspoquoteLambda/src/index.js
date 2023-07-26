@@ -18,6 +18,34 @@ const fetch = require("node-fetch");
 const path = require("path");
 const fs = require("fs");
 
+async function updateQuoteDDBObject() {
+  const quoteTableName =
+    process.env.API_INSPIRATIONALQUOTES_QUOTEAPPDATATABLE_NAME;
+  const quoteObjectID = "12232-234234-234234234-234234234";
+
+  try {
+    var quoteParams = {
+      TableName: quoteTableName,
+      Key: {
+        id: quoteObjectID,
+      },
+      UpdateExpression: "SET #quotesGenerated = #quotesGenerated + :inc",
+      ExpressionAttributeValues: {
+        ":inc": 1,
+      },
+      ExpressionAttributeNames: {
+        "#quotesGenerated": "quotesGenerated",
+      },
+      ReturnValues: "UPDATED_NEW",
+    };
+
+    const updateQuoteObject = await docClient.update(quoteParams).promise();
+    return updateQuoteObject;
+  } catch (error) {
+    console.error("Error Updating Quote Object in DynamoDB: ", error);
+  }
+}
+
 exports.handler = async (event) => {
   console.log(`EVENT: ${JSON.stringify(event)}`);
   return {
