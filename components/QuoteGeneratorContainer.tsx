@@ -9,7 +9,11 @@ import {
   GenerateQuoteButtonText,
 } from "./QuoteGenerator/QuoteGeneratorElements";
 
-export default function QuoteGeneratorContainer() {
+export default function QuoteGeneratorContainer({
+  handleOpenGenerator,
+}: {
+  handleOpenGenerator: (e: React.SyntheticEvent) => Promise<void>;
+}) {
   return (
     <QuoteGeneratorCon>
       <QuoteGeneratorInnerCon>
@@ -30,7 +34,7 @@ export default function QuoteGeneratorContainer() {
           .
         </QuoteGeneratorSubTitle>
 
-        <GenerateQuoteButton onClick={() => {}}>
+        <GenerateQuoteButton onClick={handleOpenGenerator}>
           <GenerateQuoteButtonText>Make a Quote</GenerateQuoteButtonText>
         </GenerateQuoteButton>
       </QuoteGeneratorInnerCon>
