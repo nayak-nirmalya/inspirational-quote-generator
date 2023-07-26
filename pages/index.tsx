@@ -88,7 +88,7 @@ export default function Home() {
       const bodyAndBase64 = responseReStringified.substring(bodyIndex);
       const bodyArray = bodyAndBase64.split(",");
       const body = bodyArray[0];
-      console.log(body);
+
       setQuoteReceived(body);
 
       updateQuoteInfo();
