@@ -9,6 +9,21 @@ import QuoteGeneratorContainer from "@/components/QuoteGeneratorContainer";
 
 import { quotesQueryName } from "@/src/graphql/queries";
 import { API } from "aws-amplify";
+import { GraphQLResult } from "@aws-amplify/api-graphql";
+
+function isGraphQLResultForquotesQueryName(
+  response: any
+): response is GraphQLResult<{
+  quotesQueryName: {
+    items: [UpdateQuoteInfoData];
+  };
+}> {
+  return (
+    response.data &&
+    response.data.quotesQueryName &&
+    response.data.quotesQueryName.items
+  );
+}
 
 export default function Home() {
   const [numberOfQuotes, setNumberOfQuotes] = useState<Number>(0);
