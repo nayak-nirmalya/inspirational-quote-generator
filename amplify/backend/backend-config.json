@@ -65,22 +65,11 @@
       "service": "Lambda"
     }
   },
-  "parameters": {
-    "AMPLIFY_function_inspoquoteLambda_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "inspoquoteLambda"
-        }
-      ]
-    },
-    "AMPLIFY_function_inspoquoteLambda_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "inspoquoteLambda"
-        }
-      ]
+  "hosting": {
+    "amplifyhosting": {
+      "lastPushTimeStamp": "2023-07-27T04:11:56.343Z",
+      "service": "amplifyhosting",
+      "type": "cicd"
     }
   }
 }
